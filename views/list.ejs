@@ -1,0 +1,23 @@
+<%- include("header") -%>
+<div class="box" id="heading">
+    <h1><%= listTitle %></h1>
+</div>
+
+<div class="box">
+    <% kindofitems.forEach((element)=>{ %>
+    <form method="POST" action="/delete">
+        <div class="item">
+            <input type="checkbox" name="checkbox" onchange="this.form.submit()" value=<%= element._id %>>
+            <input type="hidden" name="list" value=<%= listTitle %>>
+            <p> <%= element.name %> </p>
+        </div>
+    </form>
+
+    <% }); %>
+    <form id="secondForm" action="/" method="POST">
+        <input type="text" name="newTask" placeholder="Type task" autocomplete="off">
+        <button type="submit" name="list" value=<%= listTitle %>> + </button>
+    </form>
+</div>
+
+<%- include("footer") -%>
